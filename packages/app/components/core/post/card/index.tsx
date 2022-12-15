@@ -73,6 +73,7 @@ export function PostCard({
       {content != '' ? <PostCardContent content={content} /> : <Box py={0.2} />}
       {media.length > 0 && <PostCardMedia media={media} />}
       <PostCardActions
+        username={username}
         postId={id}
         isLiked={isLiked}
         activity={activity}

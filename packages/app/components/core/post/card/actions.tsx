@@ -10,11 +10,15 @@ import {
   Divider,
 } from 'native-base'
 import AntDesign from '@expo/vector-icons/AntDesign'
+import { Checkbox, Center, NativeBaseProvider } from 'native-base'
+
 import Ionicons from '@expo/vector-icons/Ionicons'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 import { useEvent, useEventDispatch } from 'app/hooks/event'
 import { Button, Modal, VStack, HStack, Radio } from 'native-base'
 import { Image } from 'react-native'
+
+import Entypo from '@expo/vector-icons/Entypo'
 
 type PostCardActionsProps = {
   postId: string
@@ -25,6 +29,7 @@ type PostCardActionsProps = {
   }
   onLikePressed: (isLiked: boolean) => void
   onCommentPressed: () => void
+  username: string
 }
 
 export function PostCardActions({
@@ -41,6 +46,11 @@ export function PostCardActions({
   const [showModal2, setShowModal2] = useState(false)
   const [showModal3, setShowModal3] = useState(false)
   const [showModal4, setShowModal4] = useState(false)
+
+  const [groupValues, setGroupValues] = React.useState([])
+  const [AllFriends, setAllFriends] = useState(false)
+
+  const [tagLocation, setTagLocation] = useState(false)
 
   const dispatch = useEventDispatch()
 
@@ -59,14 +69,128 @@ export function PostCardActions({
     setCount(isLiked)
   }
 
+  const Friends = [
+    {
+      id: 1,
+      name: 'John Doe',
+      image:
+        'https://pbs.twimg.com/profile_images/1361031716879368192/6QZQZQ9n_400x400.jpg',
+    },
+    {
+      id: 2,
+      name: 'John 3E23',
+      image:
+        'https://pbs.twimg.com/profile_images/1361031716879368192/6QZQZQ9n_400x400.jpg',
+    },
+  ]
+
   return (
     <>
-      <Modal isOpen={showModal} onClose={() => setShowModal(false)} size="xl">
-        <Modal.Content maxWidth="350">
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <Modal.Content maxWidth="450" width="100%">
           <Modal.CloseButton />
           <Modal.Header>Share Post</Modal.Header>
           <Modal.Body>
             <VStack space={3}>
+              <View>
+                <HStack alignItems="center" justifyContent="space-between">
+                  <HStack alignItems="center">
+                    <Avatar
+                      source={{
+                        uri: 'https://pbs.twimg.com/profile_images/1361031716879368192/6QZQZQ9n_400x400.jpg',
+                      }}
+                      style={{ width: 50, height: 50, borderRadius: 50 }}
+                    />
+                    <Text fontWeight="medium" margin="3px">
+                      @username
+                    </Text>
+                  </HStack>
+                  <Text>
+                    <AntDesign
+                      name="tags"
+                      size={24}
+                      onPress={() => {
+                        setAllFriends(!AllFriends)
+                      }}
+                    />
+                    <Entypo
+                      name="location-pin"
+                      size={24}
+                      onPress={() => setTagLocation(!tagLocation)}
+                    />
+                  </Text>
+                </HStack>
+              </View>
+              {tagLocation ? (
+                <HStack alignItems="center">
+                  <Input placeholder="Add Location..." width="100%" />
+                </HStack>
+              ) : null}
+
+              {AllFriends ? (
+                <View
+                  borderColor="gray.200"
+                  borderWidth={1}
+                  borderRadius={5}
+                  padding={2}
+                >
+                  <HStack
+                    alignItems="center"
+                    justifyContent="space-between"
+                    borderColor="gray.200"
+                  >
+                    <Checkbox.Group
+                      onChange={setGroupValues}
+                      value={groupValues}
+                      accessibilityLabel="choose numbers"
+                    >
+                      {Friends.map((friend) => (
+                        <Checkbox
+                          key={friend.id}
+                          value={friend.name}
+                          my={2}
+                          color="white"
+                        >
+                          <Avatar
+                            source={{
+                              uri: friend.image,
+                            }}
+                            margin="5px"
+                          />{' '}
+                          {friend.name}
+                        </Checkbox>
+                      ))}
+                    </Checkbox.Group>
+                    ;
+                  </HStack>
+                </View>
+              ) : null}
+
+              {groupValues && groupValues.length > 0
+                ? groupValues.map((value) => (
+                    <Text
+                      key={value}
+                      borderColor="gray.200"
+                      borderWidth={1}
+                      borderRadius={5}
+                      padding={2}
+                      color="white"
+                      display={groupValues.length > 0 ? 'flex' : 'none'}
+                      width="100%"
+                      alignItems="center"
+                      justifyItems="center"
+                    >
+                      <Avatar
+                        source={{
+                          uri: 'https://pbs.twimg.com/profile_images/1361031716879368192/6QZQZQ9n_400x400.jpg',
+                        }}
+                        margin="5px"
+                      />{' '}
+                      {value}
+                    </Text>
+                  ))
+                : null}
+
               <HStack alignItems="center" justifyContent="space-between">
                 <TextArea
                   placeholder="Write a caption..."
@@ -81,6 +205,7 @@ export function PostCardActions({
                   flex={1}
                 />
               </HStack>
+
               <View
                 borderColor="gray.200"
                 borderWidth={1}
@@ -119,7 +244,7 @@ export function PostCardActions({
         </Modal.Content>
       </Modal>
 
-      <Modal isOpen={showModal2} onClose={() => setShowModal2(false)} size="lg">
+      {/* <Modal isOpen={showModal2} onClose={() => setShowModal2(false)} size="lg">
         <Modal.Content maxWidth="350">
           <Modal.CloseButton />
           <Modal.Header>Add Location (Optional)</Modal.Header>
@@ -213,7 +338,7 @@ export function PostCardActions({
             </Button>
           </Modal.Footer>
         </Modal.Content>
-      </Modal>
+      </Modal> */}
 
       <Modal isOpen={showModal4} size="lg">
         <Modal.Content maxWidth="350">

@@ -84,7 +84,7 @@ export function HomeScreen() {
         />
       )}
       <FlatList
-        style={{ marginBottom: 50}}
+        style={{ marginBottom: 50 }}
         showsVerticalScrollIndicator={false}
         data={filteredPosts}
         ListHeaderComponent={<HomeHeader />}
