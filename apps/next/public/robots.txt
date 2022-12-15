@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /reset
+Disallow: /settings
+Disallow: /settings/*
+Disallow: /notification
+Disallow: /*/friends
+Disallow: /friends-requests
+Disallow: /security

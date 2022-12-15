@@ -1,0 +1,35 @@
+{
+  "name": "poker-social-frontend",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.67.6",
+    "cz-conventional-changelog": "^3.3.0",
+    "esbuild": "^0.14.40",
+    "eslint": "^8.15.0",
+    "husky": "^8.0.1",
+    "turbo": "^1.2.9",
+    "typescript": "~4.3.5"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "native": "cd apps/expo && expo start",
+    "android": "cd apps/expo && yarn android",
+    "build:android": "cd apps/expo && yarn build:android",
+    "build:bundle": "cd apps/expo && yarn build:bundle",
+    "web": "cd apps/next && yarn next",
+    "build:web": "cd apps/next && yarn build",
+    "gql": "cd packages/app && yarn gql"
+  },
+  "dependencies": {
+    "next-seo": "^5.15.0"
+  }
+}

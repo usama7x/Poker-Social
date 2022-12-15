@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+      java: corretto11
+    commands:
+      - n 16
+  build:
+    commands:
+      - yarn
+      - yarn build:android
+artifacts:
+  files:
+    - apps/expo/android/app/build/outputs/apk/release/*.apk
+  discard-paths: yes

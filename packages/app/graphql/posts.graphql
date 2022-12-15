@@ -1,0 +1,57 @@
+query posts {
+  posts {
+    id
+    content
+    media {
+      url
+      mimetype
+      hash
+    }
+    author {
+      name
+      profileImage {
+        url
+        hash
+      }
+      username
+    }
+    isLiked
+    activity {
+      likesCount
+      commentsCount
+    }
+    recentComments {
+      user {
+        username
+        profileImage {
+          hash
+          url
+          mimetype
+        }
+      }
+      content
+    }
+    createdAt
+    updatedAt
+  }
+}
+
+mutation createPost($content: String!, $media: [Upload!]!) {
+  createPost(createPostInput: { content: $content, media: $media }) {
+    id
+  }
+}
+
+mutation removePost($id: String!) {
+  removePost(id: $id) {
+    id
+  }
+}
+
+mutation likePost($postId: String!) {
+  likePost(postId: $postId)
+}
+
+mutation unLikePost($postId: String!) {
+  unLikePost(postId: $postId)
+}

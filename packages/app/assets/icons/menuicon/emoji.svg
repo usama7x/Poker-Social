@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="12.895mm" height="12.895mm" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 1289 1289"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+    <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="322.37" y1="322.37" x2="967.12" y2="967.12">
+     <stop offset="0" stop-opacity="1" stop-color="#FFC629"/>
+     <stop offset="1" stop-opacity="1" stop-color="#584501"/>
+    </linearGradient>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_366359744">
+   <circle fill="url(#id0)" cx="645" cy="645" r="645"/>
+   <g>
+    <ellipse fill="#1A2235" cx="454" cy="508" rx="65" ry="85"/>
+    <ellipse fill="#1A2235" cx="836" cy="508" rx="65" ry="85"/>
+   </g>
+   <path fill="#1A2235" d="M360 949c40,-37 270,-239 542,-89 8,5 16,9 24,14 0,0 -9,-2 -24,-6 -72,-15 -298,-48 -540,83 -8,5 -10,6 -2,-2z"/>
+  </g>
+ </g>
+</svg>

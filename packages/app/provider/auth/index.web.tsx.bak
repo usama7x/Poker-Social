@@ -1,0 +1,84 @@
+import AppHeader from 'app/components/core/app-header'
+import { getCurrentSession } from 'app/services/authentication'
+import { Spinner, View } from 'native-base'
+import React, { useContext, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import { AppContext } from 'app/contexts/app'
+
+export function AuthenticationProvider({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const router = useRouter()
+
+  const { isAuthenticated, setAuthenticated } = useContext(AppContext)
+  const [isGuest, setIsGuest] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    async function getUser() {
+      try {
+        await getCurrentSession()
+        setAuthenticated(true)
+      } catch (error) {
+      } finally {
+      }
+    }
+
+    getUser()
+  }, [])
+
+  useEffect(() => {
+    const guestRoutes = ['login', 'signup', 'forgot', 'reset']
+
+    const routeName = router.asPath.split('/')[1] ?? ''
+
+    setIsGuest(
+      guestRoutes.some((route) => {
+        return route === routeName
+      })
+    )
+  }, [router.asPath])
+
+  useEffect(() => {
+    if (isAuthenticated && isGuest) {
+      // router.replace('/')
+    }
+    // if (!isAuthenticated && !isGuest) {
+    //   router.replace('/login')
+    // }
+  }, [isAuthenticated, isGuest])
+
+  if (isGuest != null) {
+    if (isAuthenticated && !isGuest) {
+      return (
+        <>
+          {isAuthenticated && <AppHeader />}
+          <View
+            flex={1}
+            bg="#1A2235"
+            flexDirection="row"
+            justifyContent="center"
+          >
+            {children}
+          </View>
+          {/* {isAuthenticated && <AppBottomBar />} */}
+        </>
+      )
+    }
+
+    if (!isAuthenticated && isGuest) {
+      return (
+        <View flex={1} bg="#1A2235" flexDirection="row" justifyContent="center">
+          {children}
+        </View>
+      )
+    }
+  }
+
+  return (
+    <View flex={1} bg="#1A2235" flexDirection="row" justifyContent="center">
+      <Spinner size="lg" />
+    </View>
+  )
+}

@@ -1,0 +1,71 @@
+query comments($parentId: String!) {
+  findAllComments(parentId: $parentId) {
+    id
+    content
+    user {
+      name
+      username
+      profileImage {
+        url
+        hash
+      }
+    }
+    activity {
+      likesCount
+      repliesCount
+    }
+    createdAt
+    updatedAt
+    isLiked
+  }
+}
+
+mutation createComment(
+  $content: String!
+  $parentId: String!
+  $parentType: ParentType!
+) {
+  createComment(
+    createCommentInput: {
+      content: $content
+      parentId: $parentId
+      parentType: $parentType
+    }
+  ) {
+    id
+    content
+    user {
+      name
+      username
+      profileImage {
+        url
+        hash
+      }
+    }
+    activity {
+      likesCount
+      repliesCount
+    }
+    createdAt
+    updatedAt
+    isLiked
+  }
+}
+
+mutation likeComment($id: String!) {
+  likeComment(id: $id) {
+    id
+  }
+}
+
+mutation removeComment($id: String!) {
+  removeComment(id: $id) {
+    id
+  }
+}
+
+mutation unLikeComment($id: String!) {
+  unLikeComment(id: $id) {
+    id
+  }
+}

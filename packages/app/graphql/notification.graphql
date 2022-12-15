@@ -1,0 +1,59 @@
+query notifications {
+  notifications {
+    friendRequests {
+      friendRequest
+      fromName
+      fromProfileImage {
+        hash
+        url
+      }
+      fromUser
+      fromUsername
+      hasSeen
+      id
+      createdAt
+      updatedAt
+    }
+    general {
+      id
+      media {
+        hash
+        url
+      }
+      message
+      url
+      createdAt
+      updatedAt
+    }
+  }
+}
+
+subscription watchNotifications {
+  watchNotifications {
+    friendRequest {
+      friendRequest
+      fromName
+      fromProfileImage {
+        hash
+        url
+      }
+      fromUser
+      fromUsername
+      hasSeen
+      id
+      createdAt
+      updatedAt
+    }
+    general {
+      id
+      media {
+        hash
+        url
+      }
+      message
+      url
+      createdAt
+      updatedAt
+    }
+  }
+}

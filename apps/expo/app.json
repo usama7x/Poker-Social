@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "PokerSocial",
+    "slug": "poker-social",
+    "version": "1.0.0",
+    "sdkVersion": "44.0.0",
+    "scheme": "poker-social",
+    "icon": "./assets/icon.png",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": [
+      "expo-image-picker"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.poker.social"
+    },
+    "splash": {
+      "backgroundColor": "#FEF9B0"
+    },
+    "android": {
+      "icon": "./assets/icon.png",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#000"
+      },
+      "softwareKeyboardLayoutMode": "pan",
+      "package": "com.poker.social"
+    }
+  }
+}

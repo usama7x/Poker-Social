@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="9.9701mm" height="9.9739mm" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 286 286"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+    <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="143.026" y1="277.575" x2="143.026" y2="8.58428">
+     <stop offset="0" stop-opacity="1" stop-color="#005596"/>
+     <stop offset="1" stop-opacity="1" stop-color="#3ABEFE"/>
+    </linearGradient>
+    <linearGradient id="id1" gradientUnits="userSpaceOnUse" x1="223.972" y1="46.6024" x2="71.5089" y2="230.12">
+     <stop offset="0" stop-opacity="1" stop-color="#005596"/>
+     <stop offset="1" stop-opacity="1" stop-color="#3ABEFE"/>
+    </linearGradient>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_776137944">
+   <path fill="url(#id0)" fill-rule="nonzero" d="M259 36c0,2 -2,5 -3,7l-9 21c-7,15 -13,30 -20,44 -1,2 -2,5 -3,7l-7 15c-1,2 -2,4 -3,7 -1,2 -2,4 -3,7l-30 65c-1,2 -2,5 -3,7l-20 43c-1,4 -2,4 -7,4 -3,-5 -2,-4 -3,-11l-18 -87 129 -129zm0 0l0 0zm-7 -10l-131 130 -94 -19c-5,-2 -4,-7 -2,-9l34 -15c2,-1 3,-2 5,-3l69 -31c11,-5 28,-12 40,-18l9 -4c17,-7 38,-17 54,-25 3,-1 14,-6 16,-6zm0 0l0 0zm-252 105c0,12 6,21 14,25 8,4 49,12 63,15 5,1 10,2 16,3l16 3 9 47c1,5 2,10 4,16 3,15 4,33 15,41 11,7 26,7 35,-2 9,-8 12,-21 17,-31 3,-6 5,-11 8,-17 1,-3 2,-5 4,-8l11 -25c1,-2 1,-3 2,-5 1,-1 1,-2 2,-3 1,-4 2,-6 4,-9l15 -33c1,-3 2,-6 3,-9l42 -92c3,-7 6,-10 6,-20 0,-17 -19,-33 -38,-25 -13,5 -30,14 -42,19l-17 8c-22,10 -45,20 -67,30l-21 9c-1,1 -2,1 -4,2l-54 25c-10,4 -30,11 -36,19 -4,4 -7,10 -7,17z"/>
+   <path fill="url(#id1)" fill-rule="nonzero" d="M259 36c0,2 -2,5 -3,7l-9 20c-7,14 -13,28 -19,42 -1,2 -2,5 -3,7l-6 13c-1,3 -2,5 -4,7 -1,3 -2,5 -3,7l-28 62c-1,2 -2,5 -3,7l-19 42c-1,3 -2,3 -6,3 -3,-5 -2,-4 -4,-11l-17 -83 124 -123zm0 0l0 0zm-8 -10l-124 125 -90 -19c-5,-1 -4,-6 -2,-8l33 -15c2,-1 3,-1 4,-2l66 -30c10,-5 27,-11 38,-17l9 -4c16,-7 36,-16 52,-24 3,-1 12,-6 14,-6zm0 0l0 0zm-240 101c0,11 6,20 14,24 7,4 47,11 59,14 6,1 10,2 16,3l15 3 9 45c1,5 2,9 3,15 4,15 4,31 15,39 10,7 25,7 34,-2 8,-7 11,-20 16,-30 3,-5 5,-10 7,-16 1,-2 2,-5 4,-7l11 -25c0,-1 1,-2 1,-4 1,-1 2,-2 2,-3 1,-3 3,-6 4,-8l14 -32c2,-3 3,-5 4,-8l40 -88c3,-8 5,-10 5,-20 0,-16 -18,-31 -36,-23 -12,5 -28,13 -40,18l-16 7c-22,10 -43,19 -64,29l-20 9c-2,1 -2,1 -4,2l-52 23c-9,4 -28,11 -34,18 -4,4 -7,10 -7,17z"/>
+  </g>
+ </g>
+</svg>

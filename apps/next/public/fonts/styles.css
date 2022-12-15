@@ -1,0 +1,47 @@
+@font-face {
+  src: url(Ionicons.ttf);
+  font-family: 'Ionicons';
+}
+@font-face {
+  src: url(EvilIcons.ttf);
+  font-family: 'EvilIcons';
+}
+@font-face {
+  src: url(Entypo.ttf);
+  font-family: 'Entypo';
+}
+
+@font-face {
+  src: url(AntDesign.ttf);
+  font-family: 'AntDesign';
+}
+
+@font-face {
+  src: url(FontAwesome5_Regular.ttf);
+  font-family: 'FontAwesome5_Regular';
+}
+
+@font-face {
+  src: url(FontAwesome5_Solid.ttf);
+  font-family: 'FontAwesome5_Solid';
+}
+
+@font-face {
+  src: url(FontAwesome5_Brands.ttf);
+  font-family: 'FontAwesome5_Brands';
+}
+
+@font-face {
+  src: url(MaterialIcons.ttf);
+  font-family: 'MaterialIcons';
+}
+
+@font-face {
+  src: url(Feather.ttf);
+  font-family: 'Feather';
+}
+
+@font-face {
+  src: url(MaterialCommunityIcons.ttf);
+  font-family: 'MaterialCommunityIcons';
+}

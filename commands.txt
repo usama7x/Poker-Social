@@ -1,0 +1,1 @@
+yarn configure-splash-screen -p android i "./assets/adaptive-icon.png" -b "#090C13" --dark-mode-background-color "#090C13" --dark-mode-status-bar-background-color "#090C13" --status-bar-background-color "#090C13"

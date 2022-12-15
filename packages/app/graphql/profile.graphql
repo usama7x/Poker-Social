@@ -1,0 +1,184 @@
+query profile($username: String!) {
+  user(username: $username) {
+    id
+    name
+    firstName
+    lastName
+    username
+    bio
+    profileImage {
+      url
+      hash
+      mimetype
+    }
+    coverImage {
+      url
+      hash
+      mimetype
+    }
+  }
+
+  friendsByUsername(username: $username) {
+    id
+    friend {
+      name
+      username
+      profileImage {
+        hash
+        url
+        mimetype
+      }
+    }
+  }
+
+  postsByUsername(username: $username) {
+    id
+    content
+    media {
+      url
+      mimetype
+      hash
+    }
+    author {
+      name
+      profileImage {
+        url
+        hash
+        mimetype
+      }
+      username
+    }
+    isLiked
+    activity {
+      likesCount
+      commentsCount
+    }
+    recentComments {
+      user {
+        username
+        profileImage {
+          hash
+          url
+          mimetype
+        }
+      }
+      content
+    }
+    createdAt
+    updatedAt
+  }
+}
+
+query friendsByUsername($username: String!) {
+  friendsByUsername(username: $username) {
+    id
+    friend {
+      name
+      username
+      profileImage {
+        hash
+        url
+        mimetype
+      }
+    }
+  }
+}
+
+query friendRequests {
+  friendRequests {
+    fromUser {
+      id
+      username
+      firstName
+      lastName
+      profileImage {
+        url
+        hash
+        mimetype
+      }
+    }
+    id
+    toUser
+    createdAt
+  }
+}
+
+query friendExists($id: ID!) {
+  friendExists(id: $id)
+}
+
+query friendRequest($userId: String!) {
+  friendRequestSent(userId: $userId) {
+    fromUser {
+      id
+    }
+    id
+    toUser
+  }
+
+  friendRequest(userId: $userId) {
+    fromUser {
+      id
+    }
+    id
+    toUser
+  }
+}
+
+query friends {
+  friends {
+    id
+    friend {
+      name
+      username
+      profileImage {
+        hash
+        url
+        mimetype
+      }
+    }
+  }
+}
+
+mutation createFriendRequest($userId: String!) {
+  createFriendRequest(createFriendRequestInput: { toUserId: $userId }) {
+    fromUser {
+      id
+    }
+    id
+    toUser
+  }
+}
+
+mutation acceptFriendRequest($id: String!) {
+  acceptFriendRequest(id: $id) {
+    fromUser {
+      id
+      username
+    }
+    id
+    toUser
+  }
+}
+
+mutation rejectFriendRequest($id: String!) {
+  rejectFriendRequest(id: $id) {
+    fromUser {
+      id
+      username
+    }
+    id
+    toUser
+  }
+}
+
+mutation removeFriendRequest($id: String!) {
+  removeFriendRequst(id: $id) {
+    fromUser {
+      id
+      username
+    }
+    id
+    toUser
+  }
+}

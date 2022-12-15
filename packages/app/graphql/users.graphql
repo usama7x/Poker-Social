@@ -1,0 +1,88 @@
+query user($username: String!) {
+  user(username: $username) {
+    id
+    username
+    email
+    name
+    firstName
+    lastName
+    gender
+    dob
+    bio
+    profileImage {
+      url
+      hash
+    }
+    coverImage {
+      url
+      hash
+    }
+  }
+}
+
+mutation updateUser(
+  $firstName: String
+  $lastName: String
+  $gender: String
+  $dob: DateTime
+  $profileImage: Upload
+  $coverImage: Upload
+) {
+  updateUser(
+    updateUserInput: {
+      firstName: $firstName
+      lastName: $lastName
+      gender: $gender
+      dob: $dob
+      profileImage: $profileImage
+      coverImage: $coverImage
+    }
+  ) {
+    id
+    username
+    email
+    name
+    firstName
+    lastName
+    gender
+    dob
+    bio
+    profileImage {
+      url
+      hash
+    }
+    coverImage {
+      url
+      hash
+    }
+  }
+}
+
+mutation deactivateUser {
+  deactivateUser
+}
+
+query searchUsers($query: String!) {
+  searchUsers(query: $query) {
+    name
+    profileImage {
+      url
+      hash
+      mimetype
+    }
+    email
+    username
+  }
+}
+
+mutation removeProfileImage {
+  removeProfileImage {
+    id
+  }
+}
+
+mutation removeCoverImage {
+  removeCoverImage {
+    id
+  }
+}
