@@ -36,7 +36,11 @@ export function CreatePost2() {
         if (!imageName) {
           throw new Error('Image name is empty')
         }
-        images.push(generateRNFile(image.uri, imageName, image.type ?? 'image'))
+        // images.push(generateRNFile(image.uri, imageName, image.type ?? 'image'))
+        const file = generateRNFile(image.uri, imageName, image.type ?? 'image');
+        const response = await fetch(file.uri);
+        const blob = await response.blob();
+        images.push(blob);
       }
 
       // Calling API to create post

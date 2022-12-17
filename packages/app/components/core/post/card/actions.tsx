@@ -19,6 +19,7 @@ import { Button, Modal, VStack, HStack, Radio } from 'native-base'
 import { Image } from 'react-native'
 
 import Entypo from '@expo/vector-icons/Entypo'
+import { useSharePostMutation, useFriendsByUsernameQuery } from 'app/generates'
 
 type PostCardActionsProps = {
   postId: string
@@ -30,6 +31,7 @@ type PostCardActionsProps = {
   onLikePressed: (isLiked: boolean) => void
   onCommentPressed: () => void
   username: string
+  friends: { name: string, id: string, image: string }[]
 }
 
 export function PostCardActions({
@@ -37,8 +39,11 @@ export function PostCardActions({
   onLikePressed,
   onCommentPressed,
   postId,
+  username,
+  friends,
   ...props
 }: PostCardActionsProps) {
+
   const [isLiked, setIsLiked] = useState(props.isLiked)
   const [likesCount, setLikesCount] = useState(activity.likesCount)
 
@@ -46,12 +51,11 @@ export function PostCardActions({
   const [showModal2, setShowModal2] = useState(false)
   const [showModal3, setShowModal3] = useState(false)
   const [showModal4, setShowModal4] = useState(false)
-
   const [groupValues, setGroupValues] = React.useState([])
   const [AllFriends, setAllFriends] = useState(false)
-
-  const [tagLocation, setTagLocation] = useState(false)
-
+  const [locationModal, setLocationModal] = useState(false)
+  const [taggedLocation, setTaggedLocation] = useState('')
+  const [{ fetching }, sharePost] = useSharePostMutation()
   const dispatch = useEventDispatch()
 
   function setCount(isLiked: boolean) {
@@ -67,6 +71,17 @@ export function PostCardActions({
   function onLikeEvent(isLiked: boolean) {
     setIsLiked(isLiked)
     setCount(isLiked)
+  }
+
+  const onPostShare = async (e) => {
+    console.log(e);
+    debugger;
+    const id = await sharePost({
+      postId: postId,
+      taggedFriends: groupValues,
+      taggedLocation: taggedLocation
+    })
+    console.log(id);
   }
 
   const Friends = [
@@ -116,14 +131,14 @@ export function PostCardActions({
                     <Entypo
                       name="location-pin"
                       size={24}
-                      onPress={() => setTagLocation(!tagLocation)}
+                      onPress={() => setLocationModal(!locationModal)}
                     />
                   </Text>
                 </HStack>
               </View>
-              {tagLocation ? (
+              {locationModal ? (
                 <HStack alignItems="center">
-                  <Input placeholder="Add Location..." width="100%" />
+                  <Input onChangeText={location => setTaggedLocation(location)} placeholder="Add Location..." width="100%" />
                 </HStack>
               ) : null}
 
@@ -144,7 +159,7 @@ export function PostCardActions({
                       value={groupValues}
                       accessibilityLabel="choose numbers"
                     >
-                      {Friends.map((friend) => (
+                      {friends.map((friend) => (
                         <Checkbox
                           key={friend.id}
                           value={friend.name}
@@ -168,27 +183,27 @@ export function PostCardActions({
 
               {groupValues && groupValues.length > 0
                 ? groupValues.map((value) => (
-                    <Text
-                      key={value}
-                      borderColor="gray.200"
-                      borderWidth={1}
-                      borderRadius={5}
-                      padding={2}
-                      color="white"
-                      display={groupValues.length > 0 ? 'flex' : 'none'}
-                      width="100%"
-                      alignItems="center"
-                      justifyItems="center"
-                    >
-                      <Avatar
-                        source={{
-                          uri: 'https://pbs.twimg.com/profile_images/1361031716879368192/6QZQZQ9n_400x400.jpg',
-                        }}
-                        margin="5px"
-                      />{' '}
-                      {value}
-                    </Text>
-                  ))
+                  <Text
+                    key={value}
+                    borderColor="gray.200"
+                    borderWidth={1}
+                    borderRadius={5}
+                    padding={2}
+                    color="white"
+                    display={groupValues.length > 0 ? 'flex' : 'none'}
+                    width="100%"
+                    alignItems="center"
+                    justifyItems="center"
+                  >
+                    <Avatar
+                      source={{
+                        uri: 'https://pbs.twimg.com/profile_images/1361031716879368192/6QZQZQ9n_400x400.jpg',
+                      }}
+                      margin="5px"
+                    />{' '}
+                    {value}
+                  </Text>
+                ))
                 : null}
 
               <HStack alignItems="center" justifyContent="space-between">
@@ -233,7 +248,8 @@ export function PostCardActions({
           <Modal.Footer>
             <Button
               flex="1"
-              onPress={() => {
+              onPress={(e) => {
+                onPostShare(e)
                 setShowModal2(true)
                 setShowModal(false)
               }}

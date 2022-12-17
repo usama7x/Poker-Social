@@ -39,6 +39,8 @@ query profile($username: String!) {
       mimetype
       hash
     }
+    taggedFriends
+    taggedLocation
     author {
       name
       profileImage {

@@ -6,6 +6,8 @@ import { PostCardMedia } from './media'
 import { PostCardActions } from './actions'
 import { PostCardFooter } from './footer'
 import Entypo from '@expo/vector-icons/Entypo'
+import { useFriendsByUsernameQuery } from 'app/generates'
+
 export type PostCardProps = {
   username: string
   id: string
@@ -56,7 +58,12 @@ export function PostCard({
   onRemoveButtonPressed,
 }: PostCardProps) {
   const showOptions = useMemo(() => username == author.username, [username])
-
+  const [{ data: friends }] = useFriendsByUsernameQuery({
+    variables: {
+      username,
+    },
+    requestPolicy: 'network-only',
+  })
   return (
     <Column py={3} bg="#1A2235" space={2}>
       <Row justifyContent="space-between" alignItems="center" px={4}>
@@ -73,6 +80,7 @@ export function PostCard({
       {content != '' ? <PostCardContent content={content} /> : <Box py={0.2} />}
       {media.length > 0 && <PostCardMedia media={media} />}
       <PostCardActions
+        friends={(friends && friends.friendsByUsername.map(f => ({ name: f.friend.name, id: f.id, image: f.friend.profileImage }))) as any}
         username={username}
         postId={id}
         isLiked={isLiked}

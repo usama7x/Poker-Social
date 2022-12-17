@@ -7,6 +7,8 @@ query posts {
       mimetype
       hash
     }
+    taggedFriends
+    taggedLocation
     author {
       name
       profileImage {
@@ -36,11 +38,17 @@ query posts {
   }
 }
 
-mutation createPost($content: String!, $media: [Upload!]!) {
-  createPost(createPostInput: { content: $content, media: $media }) {
+mutation createPost($content: String!, $media: [Upload!]!, $taggedLocation: String, $taggedFriends: [String!]) {
+  createPost(createPostInput: { content: $content, media: $media, taggedLocation: $taggedLocation taggedFriends: $taggedFriends }) {
     id
   }
 }
+
+mutation sharePost($postId: String!, $taggedFriends: [String!], $taggedLocation: String) {
+  sharePost(postId: $postId, postData: { taggedLocation: $taggedLocation, taggedFriends: $taggedFriends})
+}
+
+
 
 mutation removePost($id: String!) {
   removePost(id: $id) {

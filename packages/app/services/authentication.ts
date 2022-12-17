@@ -26,8 +26,10 @@ console.log(process.env.NODE_ENV == 'development' ? 'localhost' : 'pokersocial.n
 export function initAmplify() {
   Amplify.configure({
     Auth: {
-      userPoolId: 'ap-south-1_vVUOxBHCJ',
-      userPoolWebClientId: '4leasfjtpbb31o7a7oggvl1aeo',
+      // userPoolId: 'ap-south-1_vVUOxBHCJ',
+      userPoolId: 'ap-south-1_8x5zkIDR5',
+      // userPoolWebClientId: '4leasfjtpbb31o7a7oggvl1aeo',
+      userPoolWebClientId: '4fue3f234hd3fof1praof6lsa5',
       cookieStorage: isWeb
         ? {
           domain: process.env.NODE_ENV == 'development' ? 'localhost' : 'pokersocial.net',
